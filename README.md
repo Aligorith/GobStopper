@@ -25,4 +25,10 @@ Release targets are tentative only:
 * 0.3.0 - Resume playback on tabs that were playing at the time
 * 0.4.0 - Pause Brightcove based players?
 
+## Licenses and Attribution
+
+The icons in `icons_source/` are licensed as follows:
+* **Ambox_octagon_stop.svg** - CC BY-SA 3.0 - https://commons.wikimedia.org/wiki/File:Ambox_octogon_stop.svg
+* **Octagon_delete.svg** - Public Domain - https://commons.wikimedia.org/wiki/File:Octagon_delete.svg
+
 
