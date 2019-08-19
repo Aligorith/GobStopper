@@ -8,11 +8,17 @@ video/music streaming sites, and it is not always convenient to be
 riffing through your open tabs closing the sound-making tab in front
 of co-workers, bosses, clients, etc.
 
+Permissions Usage:
+* Youtube.com - It only applies on this domain
+* Tabs - To go over all open tabs, hunting for applicable media players to pause
+
 
 ## Supported Browsers
 
 Tested on Firefox 68, but it should also just work on most others
 modern ones (e.g. most versions of Chrome).
+
+* **Firefox Addons** - https://addons.mozilla.org/en-US/firefox/addon/gob-stopper/
 
 
 ## Roadmap
@@ -26,6 +32,8 @@ Release targets are tentative only:
 * 0.4.0 - Pause Brightcove based players?
 
 ## Licenses and Attribution
+
+This addon is licensed under the [Mozilla Public License (MPL) 2.0](https://www.mozilla.org/en-US/MPL/)
 
 The icons in `icons_source/` are licensed as follows:
 * **Ambox_octagon_stop.svg** - CC BY-SA 3.0 - https://commons.wikimedia.org/wiki/File:Ambox_octogon_stop.svg
