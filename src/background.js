@@ -5,10 +5,13 @@ function stopAllPlayback()
 {
 	console.log("[GobStopper] Stopping All Playback...")
 	
-	// All tabs with youtube playing a video
-	// TODO: Replace this with just a query for the tabs.audible flag
+	// All tabs have "audible = true" set
+	//
+	// In theory, all of these tabs should have one or more media elements that are generating
+	// sound events, so these are the ones we should be targetting for stopping playback.
+	//
 	// TODO: Implement support for storing which ones we muted, so we can restore playback
-	chrome.tabs.query({url: '*://www.youtube.com/watch?v*'}, function(tabs) {
+	chrome.tabs.query({audible: true}, function(tabs) {
 		for (let tab of tabs) {
 			chrome.tabs.sendMessage(tab.id, {"message": "stop_all_media"});
 		}

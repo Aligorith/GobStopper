@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Gob Stopper",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "One-click button to pause all media players",
 	"author": "Aligorith",
 	
@@ -11,7 +11,9 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"*://www.youtube.com/*"
+				"http://*/*",
+				"https://*/*",
+				"file://*/*"
 			],
 			"js": ["content.js"]
 		}
