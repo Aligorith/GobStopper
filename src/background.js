@@ -8,14 +8,24 @@ function stopAllPlayback()
 	// All tabs have "audible = true" set
 	//
 	// In theory, all of these tabs should have one or more media elements that are generating
-	// sound events, so these are the ones we should be targetting for stopping playback.
-	//
-	// TODO: Implement support for storing which ones we muted, so we can restore playback
+	// sound events, so these are the ones we should be targeting for stopping playback.
 	chrome.tabs.query({audible: true}, function(tabs) {
 		for (let tab of tabs) {
-			chrome.tabs.sendMessage(tab.id, {"message": "stop_all_media"});
+			chrome.tabs.sendMessage(tab.id, {"message": "pause_all_media"});
 		}
 	});
+}
+
+// Sends a message to restore the previous audio / video play state
+function restorePlaybackState(){
+	console.log("[GobStopper] Restoring All Playback...")
+
+	chrome.tabs.query({audible: true}, function(tabs) {
+		for (let tab of tabs) {
+			chrome.tabs.sendMessage(tab.id, {"message": "play_paused_media"});
+		}
+	});
+	
 }
 
 // Called when the user clicks on the browser action.
@@ -27,6 +37,12 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 // Called when the user presses the Global Stop-All hotkey.
 browser.commands.onCommand.addListener(function(command) {
 	if (command == "stop-all") {
-		stopAllPlayback();
+		dataInStorage = browser.storage.local.length != 0
+		console.log(browser.storage.local.length);
+		if (dataInStorage){
+			restorePlaybackState();
+		} else {
+			stopAllPlayback();
+		}
 	}
 });

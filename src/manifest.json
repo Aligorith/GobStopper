@@ -6,7 +6,8 @@
 	"author": "Aligorith",
 	
 	"permissions": [
-		"tabs"
+		"tabs",
+		"storage"
 	],
 	"content_scripts": [
 		{
