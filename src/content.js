@@ -13,33 +13,30 @@ function GetElementCollectionByTagNames(names){
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		
 		// First, get all possibly affected elements
 		mediaElements = GetElementCollectionByTagNames(["video","audio"])
 		
 		// Pause playback
 		if (request.message === "pause_all_media") {
-			pausedSrcs = {};
+			pausedSources = [];
 			mediaElements.forEach(function(media){
 				if (!media.paused) {
-					pausedSrcs[media.currentSrc] = media.currentSrc
 					media.pause();
+					pausedSources.push(media.currentSrc)
 				}
 			})
-			browser.storage.local.set(pausedSrcs);
+			browser.storage.local.set({"MediaSources": pausedSources});
 		}
 
 		// Restart playback
 		if (request.message === "play_paused_media") {
-			console.log("here");
-			mediaElements.forEach(function(media){
-				if (media.paused) {
-					browser.storage.local.get(media.currentSrc, function(src){
-						console.log("entry in storage found");
+			browser.storage.local.get("MediaSources", function(pausedEntries){
+				mediaElements.forEach(function(media){
+					if ((media.paused) && (pausedEntries.MediaSources.indexOf(media.currentSrc) > -1)) {
 						media.play();
-					})
-				}
-			})
+					}
+				})
+			});
 			browser.storage.local.clear();
 		}
 	}

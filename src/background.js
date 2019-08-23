@@ -1,5 +1,9 @@
 // background.js
 
+function isEmptyObject(obj){
+	return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
 // Send a message to all the tabs to stop playback
 function stopAllPlayback()
 {
@@ -37,12 +41,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 // Called when the user presses the Global Stop-All hotkey.
 browser.commands.onCommand.addListener(function(command) {
 	if (command == "stop-all") {
-		dataInStorage = browser.storage.local.length != 0
-		console.log(browser.storage.local.length);
-		if (dataInStorage){
-			restorePlaybackState();
-		} else {
-			stopAllPlayback();
-		}
+		browser.storage.local.get(null, function(item){
+			console.log(item)
+			if (!isEmptyObject(item)) {
+				restorePlaybackState();
+			} else {
+				stopAllPlayback();
+			}		
+		});
 	}
 });
