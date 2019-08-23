@@ -7,6 +7,11 @@ chrome.runtime.onMessage.addListener(
 					video.pause();
 				}
 			}
+			for (let audio of document.getElementsByTagName("audio")) {
+				if (!audio.paused) {
+					audio.pause();
+				}
+			}
 		}
 	}
 );
