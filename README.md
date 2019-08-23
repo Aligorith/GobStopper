@@ -29,10 +29,10 @@ Features in released versions
 * 0.1.0 - Pause videos on Youtube only
 * 0.2.0 - Pause videos on other common sites with video content (e.g. Vimeo, Twitter, and others)
 * 0.3.0 - Pause sound on common sites with audio content (HTML5 compatible ones - e.g. RNZ)
+* 0.4.0 - Resume playback on tabs that were playing at the time
 
 Release targets for upcoming releases are tentative only:
 
-* 0.4.0 - Resume playback on tabs that were playing at the time
 * 0.5.0 - Pause Brightcove based players, news sites (e.g. CNN, NBC, stuff.co.nz, herald.co.nz)
 * 0.6.0 - Pause audio streaming sites (e.g. Soundcloud, Spotify)
 * 0.7.0 - Add option for pausing all videos (including all that don't have sound), by using a more brute-force

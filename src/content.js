@@ -1,13 +1,13 @@
 // content.js
 
-// Gets all elements by the given name and return them as an array
+// Gets all elements by the given names and return them as an array
 function GetElementCollectionByTagNames(names){
 	elements = [];
 	names.forEach(function(name){
 		for (let video of document.getElementsByTagName(name)) {
 			elements.push(video);
-		}	
-	})
+		}
+	});
 	return elements;
 }
 
@@ -24,19 +24,20 @@ chrome.runtime.onMessage.addListener(
 					media.pause();
 					pausedSources.push(media.currentSrc)
 				}
-			})
-			browser.storage.local.set({"MediaSources": pausedSources});
+			});
+			browser.storage.local.set({"PausedSources": pausedSources});
 		}
 
 		// Restart playback
 		if (request.message === "play_paused_media") {
-			browser.storage.local.get("MediaSources", function(pausedEntries){
+			browser.storage.local.get("PausedSources", function(data){
 				mediaElements.forEach(function(media){
-					if ((media.paused) && (pausedEntries.MediaSources.indexOf(media.currentSrc) > -1)) {
+					if ((media.paused) && (data.PausedSources.indexOf(media.currentSrc) > -1)) {
 						media.play();
 					}
-				})
+				});
 			});
+			// no need to keep the paused sources, everything is in play back mode again
 			browser.storage.local.clear();
 		}
 	}

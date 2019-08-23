@@ -22,14 +22,13 @@ function stopAllPlayback()
 
 // Sends a message to restore the previous audio / video play state
 function restorePlaybackState(){
-	console.log("[GobStopper] Restoring All Playback...")
+	console.log("[GobStopper] Restoring previous streams...")
 
 	chrome.tabs.query({audible: true}, function(tabs) {
 		for (let tab of tabs) {
 			chrome.tabs.sendMessage(tab.id, {"message": "play_paused_media"});
 		}
 	});
-	
 }
 
 // Called when the user clicks on the browser action.
@@ -42,12 +41,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 browser.commands.onCommand.addListener(function(command) {
 	if (command == "stop-all") {
 		browser.storage.local.get(null, function(item){
-			console.log(item)
 			if (!isEmptyObject(item)) {
 				restorePlaybackState();
 			} else {
 				stopAllPlayback();
-			}		
+			}
 		});
 	}
 });
