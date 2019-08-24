@@ -1,6 +1,7 @@
 # GobStopper
 
-Pauses all videos across all open tabs by clicking on the icon or pressing F4
+Pauses all videos across all open tabs by clicking on the icon or pressing F4.
+Press F4 again to resume playback.
 
 This is useful when working in an office environment where you may be
 frequently interrupted while listening to music on Youtube or other
@@ -12,6 +13,7 @@ Permissions Usage:
 * All sites - To allow this addon to work on any site that plays back media content
               you wish to block.
 * Tabs - To go over all open tabs, hunting for applicable media players to pause
+* Storage - For storing addon state (e.g. paused media)
 
 
 ## Supported Browsers
