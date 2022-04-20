@@ -19,6 +19,16 @@ function stopAllPlayback()
 			chrome.tabs.sendMessage(tab.id, {"message": "pause_all_media"});
 		}
 	});
+	
+	// Explicitly target the active tab too (regardless of whether audible is set or not).
+	// This catches the case that the foccued tab has a bunch of active videos that are muted
+	// but are making it hard to read the text as they're animating in your face.
+	chrome.tabs.getCurrent(function(tab) {
+		if (tab && !tab.audible) {
+			console.log("[GobStopper] Pausing active tab for good measure - id = " + tab.id);
+			chrome.tabs.sendMessage(tab.id, {"message": "pause_all_media"});
+		}
+	});
 }
 
 // Sends a message to restore the previous audio / video play state

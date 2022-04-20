@@ -59,7 +59,7 @@ def probeFilenameWriteable(fileN):
 		with open(fileN, 'w') as f:
 			return True
 		# TODO: return False otherwise?
-	except OsError:
+	except OSError:
 		return False
 
 # Write the files specified in SOURCES into a zip file
