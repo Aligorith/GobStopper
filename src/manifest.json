@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Gob Stopper",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "One-click button to pause all media players",
 	"author": "Aligorith. Plasmasolutions",
 	
@@ -22,7 +22,7 @@
 	"commands": {
 		"stop-all": {
 			"suggested_key": {
-				"default": "F4"
+				"default": "Ctrl+Shift+4"
 			},
 			"description": "Send a 'stop-all' message to the extension"
 		}
@@ -31,7 +31,11 @@
 		"scripts": ["background.js"]
 	},
 	"browser_action": {
-		"default_icon": "icon.svg",
-		"default_title": "Click to pause all media players (Shortcut: F4)"
+		"default_icon": "/icons/icon-128.png",
+		"default_title": "Click to pause all media players (Shortcut: Ctrl+Shift+4)"
+	},
+	"icons": {
+		"48":  "/icons/icon-48.png",
+		"128": "/icons/icon-128.png"
 	}
 }

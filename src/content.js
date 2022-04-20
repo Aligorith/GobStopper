@@ -26,12 +26,12 @@ chrome.runtime.onMessage.addListener(
 					pausedSources.push(media.currentSrc)
 				}
 			});
-			browser.storage.local.set({"PausedSources": pausedSources});
+			chrome.storage.local.set({"PausedSources": pausedSources});
 		}
 		
 		// Restart playback
 		if (request.message === "play_paused_media") {
-			browser.storage.local.get("PausedSources", function(data) {
+			chrome.storage.local.get("PausedSources", function(data) {
 				mediaElements.forEach(function(media) {
 					if ((media.paused) && (data.PausedSources.indexOf(media.currentSrc) > -1)) {
 						media.play();
@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(
 				});
 			});
 			// no need to keep the paused sources, everything is in play back mode again
-			browser.storage.local.clear();
+			chrome.storage.local.clear();
 		}
 	}
 );

@@ -50,15 +50,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 });
 
 // Called when the user presses the Global Stop-All hotkey.
-browser.commands.onCommand.addListener(function(command) {
+chrome.commands.onCommand.addListener(function(command) {
 	if (command == "stop-all") {
-		browser.storage.local.get(null, function(item) {
-			if (!isEmptyObject(item)) {
-				restorePlaybackState();
-			}
-			else {
-				stopAllPlayback();
-			}
-		});
+		console.log("[GobStopper] Handling Stop-All Hotkey Command...");
+		stopAllPlayback();
 	}
 });

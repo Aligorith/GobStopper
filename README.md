@@ -21,7 +21,31 @@ Permissions Usage:
 Tested on Firefox 68, but it should also just work on most others
 modern ones (e.g. most versions of Chrome).
 
-* **Firefox Addons** - https://addons.mozilla.org/en-US/firefox/addon/gob-stopper/
+### Firefox Support
+
+* **Download/Install via Firefox Addons** - https://addons.mozilla.org/en-US/firefox/addon/gob-stopper/
+
+* **Hotkey:**  F4
+
+
+### Chrome-Based Browser Support
+
+On Chrome-based browsers, you'll need to run from the source / Git repo.
+
+Installation Steps (as tested using Vivaldi):
+1) Grab the latest sources from the "`-chrome`" branches / tags
+2) Open the _Extensions Manager_
+3) Click "Load Unpacked" (or the button that does something similar)
+4) Choose the "`src/`" folder from the Git repo (i.e. the folder where the `manifest.json` lives)
+
+Known Issues:
+* At least on Vivaldi, I cannot seem to get the hotkey support to work at all,
+  despite trying all the hotkeys suggested by Chrome's own docs. So, currently
+  the addon will require clicking on the toolbar icon to get it to work.
+
+* The "audible" API seems to work slightly differently on Chrome, meaning that
+  videos that have an audio track but contain silence initially may not get stopped
+  until the audio actually kicks in.
 
 
 ## Roadmap
@@ -32,6 +56,8 @@ Features in released versions
 * 0.2.0 - Pause videos on other common sites with video content (e.g. Vimeo, Twitter, and others)
 * 0.3.0 - Pause sound on common sites with audio content (HTML5 compatible ones - e.g. RNZ)
 * 0.4.0 - Resume playback on tabs that were playing at the time
+
+* 0.4.1 - Fixes to get the addon functional on Chrome-based browsers (tested with Vivaldi)
 
 Release targets for upcoming releases are tentative only:
 
